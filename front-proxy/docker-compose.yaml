@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+
+  redis:
+    image: redis
+    container_name: iast_redis
+    networks:
+      - iast-network
+    ports:
+      - "6379:6379"
+#    volumes:
+#      - ./data/redis:/data
+    environment:
+      TZ: Asia/Shanghai
+    healthcheck:
+      test: redis-cli ping
+    command: --requirepass pDmDsFWxq4YhIhGK
+
+networks:
+  iast-network:
+    driver: bridge
+    name: iast-network

@@ -1,0 +1,41 @@
+[redis]
+host = "127.0.0.1"
+password = "pDmDsFWxq4YhIhGK"
+port = 6379
+max_connection = 10
+
+[proxy]
+project = "project1"
+# 流量过期时间，有效期内，不记录重复的流量
+ttl = 604800
+
+[request]
+# 请求白名单，仅记录与白名单匹配的流量
+[request.include]
+# IP或域名，留空则全部记录：IP或域名，支持正则表达式
+# 正则：IP：^192.168.1.*；域名：.*.bing.com
+target = []
+# HTTP方法，留空则全部记录：全部大写，如："GET","POST"
+method = []
+
+# 请求黑名单【排除】，忽略与黑名单匹配的流量
+[request.exclude]
+# 排除动态链接的后缀
+suffix = ["woff2", "js", "woff", "gif", "css", "map", "txt", "png", "ico", "jpg", "svg"]
+# 排除的目标，IP或域名，支持正则表达式；一般用不上，只有request.include.target为空时才配置该项
+# 正则：IP：^192.168.1.*；域名：.*.bing.com
+target = []
+# 排除的接口，可以排除登录接口、外部调用接口等，支持正则：/开头且不包含参数，如/user/login
+# 正则："/api/v1/*"
+api = []
+
+[response]
+# 响应白名单，仅记录与白名单匹配的流量
+[response.include]
+# 仅记录指定状态码，留空则全部记录
+statusCode = [200]
+
+# 响应黑名单【排除】，忽略与黑名单匹配的流量
+[response.exclude]
+# 排除Content-Type
+contentType = ["text/plain", "image/jpeg", "image/png", "image/svg+xml"]
