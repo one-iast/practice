@@ -28,15 +28,15 @@
 
 代理式IAST的demo其实早在20年底已经验证过了（基于sqlmapapi）
 
-![0-1 demo1](./pics/0-1 demo1.jpeg)
+![0-1 demo1](https://github.com/one-iast/practice/blob/main/course/pics/0-1%20demo1.jpeg)
 
 浏览器配置IAST的代理，IAST会自动扫描通过代理的流量（调用sqlmapapi扫描sql注入），同时处理漏洞，很简单就画出了架构图：
 
-![0-2 架构图](./pics/0-2 架构图.png)
+![0-2 架构图](https://github.com/one-iast/practice/blob/main/course/pics/0-2%20%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
 
 谁还不知道用户通过Webui操作IAST，然后前端查看数据....稍微给架构图加点细节，就能画出流程图了：
 
-![0-3 流量安全扫描流程图](./pics/0-3 流量安全扫描流程图.png)
+![0-3 流量安全扫描流程图](https://github.com/one-iast/practice/blob/main/course/pics/0-3%20%E6%B5%81%E9%87%8F%E5%AE%89%E5%85%A8%E6%89%AB%E6%8F%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 在流程图中给出了用到的技术架构，代理使用mitmproxy，数据缓存使用redis，消息队列使用rabbitmq。
 
