@@ -2,7 +2,6 @@ import hashlib
 import json
 
 import mitmproxy.http
-
 import redis_model
 from util import (
     check_contains,
@@ -161,13 +160,15 @@ async def response_filter(flow: mitmproxy.http.HTTPFlow, config_dict: {}):
             f"{request_method} {split_url}?{body_standard_data} {request_port}"
         )
     else:
-        # 排除动态链接的静态资源的url
+        if "?" in request_url and request_method == "GET":
+            return
+            # 排除动态链接的静态资源的url
         if len(req_exclude_suffix) != 0:
             if split_url.rsplit(".")[-1] in req_exclude_suffix:
                 return
 
         # post data为空，非GET方法，需要按get的再判断一次，不能直接在get那里入库，防止post的url带?又有data
-        if "?" in request_url and request_method != "GET":
+        if "?" in request_url:
             redis_body_parameter_key += (
                 f"{request_method} {standard_value_url} {request_port}"
             )
