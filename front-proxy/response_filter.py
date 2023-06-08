@@ -191,4 +191,5 @@ async def data_to_redis(data, redis_con, ttl, standard_set_value):
     target_exist = redis_con.sadd(redis_key, standard_md5)
     redis_con.expire(redis_key, ttl)
     if target_exist == 1:
+        data["standard_md5"] = standard_md5
         redis_con.lpush(redis_host_key, json.dumps(data))
