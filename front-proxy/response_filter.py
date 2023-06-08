@@ -140,6 +140,7 @@ async def response_filter(flow: mitmproxy.http.HTTPFlow, config_dict: {}):
             )
             if username is not None:
                 redis_url_parameter_key += " " + username
+            data["split_url"] = split_url
             await data_to_redis(data, redis_con, ttl, redis_url_parameter_key)
     data["split_url"] = split_url
 
