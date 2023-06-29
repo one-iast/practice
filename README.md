@@ -6,6 +6,8 @@
 
 《[①代理流量获取](https://github.com/one-iast/practice/blob/main/course/1%20%E4%BB%A3%E7%90%86%E6%B5%81%E9%87%8F%E8%8E%B7%E5%8F%96.md)》
 
+《[②扫描工具选取](https://github.com/one-iast/practice/blob/main/course/2%20%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7%E9%80%89%E5%8F%96.md)》
+
 ## 微信讨论组
 
 如有任何问题，欢迎群里反馈。
