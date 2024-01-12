@@ -1,0 +1,30 @@
+[stage]
+# 封装流量时，每次pop流量的数量，建议调大
+packetSize = 200
+# python绝对路径【CHANGE_ME】
+pythonPath = "/CHANGE_ME/bin/python3"
+
+[cache.redis]
+host = "127.0.0.1"
+port = 6379
+username = ""
+password = "pDmDsFWxq4YhIhGK"
+dbNum = 0
+
+[sqlmap]
+enable = true
+thread = 5
+# 显示sqlmapapi运行日志
+showLog = false
+# sqlmapapi.py的绝对路径【CHANGE_ME】
+path = "/CHANGE_ME/sqlmap/sqlmapapi.py"
+
+[burpsuite]
+enable = true
+singleScanCount = 100
+# 通过rest api启动burpsuite的命令
+# 涉及到的文件都是绝对路径
+# 需要手动调整burp jar和burp-rest-api jar的文件路径【CHANGE_ME】
+exeCmd = "java -noverify --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -cp /CHANGE_ME/burpsuite_pro_v2023.12.1.jar:/CHANGE_ME/burp-rest-api-2.2.0.jar org.springframework.boot.loader.JarLauncher $@"
+# 显示burp rest-api运行日志
+showLog = false

@@ -1,0 +1,52 @@
+version: '3'
+silent: true
+
+env:
+  BUILD_TARGET: "build"
+  NAME: "iast-demo"
+tasks:
+  clean:
+    desc: Clean build.
+    cmds:
+      - rm -rf ${BUILD_TARGET}
+  run:
+    desc: Run project.
+    cmds:
+      - go run main.go
+  setup-darwin:
+    desc: Create build/darwin and build/darwin-arm directory.
+    cmds:
+      - mkdir -p ${BUILD_TARGET}/darwin ${BUILD_TARGET}/darwin-arm
+  setup-windows:
+    desc: Create build/windows directory.
+    cmds:
+      - mkdir -p ${BUILD_TARGET}/windows
+  setup-linux:
+    desc: Create build/linux directory.
+    cmds:
+      - mkdir -p ${BUILD_TARGET}/linux
+  setup:
+    desc: Create all build directory.
+    cmds:
+      - task: setup-darwin
+      - task: setup-windows
+      - task: setup-linux
+  build-darwin:
+    deps: [ setup-darwin ]
+    desc: Build mac exec.
+    cmds:
+      - CGO_ENABLED=0 GOARCH=amd64 GOOS=darwin go build -ldflags "-w -s -X $NAME/common.Version={{.CLI_ARGS}} -X $NAME/common.BuildTime=$(date +%FT%T%z) -X $NAME/common.Name=$NAME " -o {{.BUILD_TARGET}}/darwin/{{.NAME}}
+      - CGO_ENABLED=0 GOARCH=arm64 GOOS=darwin go build -ldflags "-w -s -X $NAME/common.Version={{.CLI_ARGS}} -X $NAME/common.BuildTime=$(date +%FT%T%z) -X $NAME/common.Name=$NAME " -o {{.BUILD_TARGET}}/darwin-arm/{{.NAME}}
+    aliases: [ mac ]
+  build-windows:
+    deps: [ setup-windows ]
+    desc: Build windows exec.
+    cmds:
+      - CGO_ENABLED=0 GOARCH=amd64 GOOS=windows go build -ldflags "-w -s -X $NAME/common.Version={{.CLI_ARGS}} -X $NAME/common.BuildTime=$(date +%FT%T%z) -X $NAME/common.Name=$NAME " -o {{.BUILD_TARGET}}/windows/{{.NAME}}.exe
+    aliases: [ win ]
+  build-linux:
+    deps: [ setup-linux ]
+    desc: Build linux exec.
+    cmds:
+      - CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -ldflags "-w -s -X $NAME/common.Version={{.CLI_ARGS}} -X $NAME/common.BuildTime=$(date +%FT%T%z) -X $NAME/common.Name=$NAME " -o {{.BUILD_TARGET}}/linux/{{.NAME}}
+    aliases: [ linux ]

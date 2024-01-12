@@ -8,6 +8,8 @@
 
 《[②扫描工具选取](https://github.com/one-iast/practice/blob/main/course/2%20%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7%E9%80%89%E5%8F%96.md)》
 
+《[③自动化任务调度](https://github.com/one-iast/practice/blob/main/course/3%20%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6.md)》
+
 ## 微信讨论组
 
 如有任何问题，欢迎群里反馈。
