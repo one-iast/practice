@@ -3,9 +3,9 @@
 `IAST Demo`是一款基于 Go 开发的 IAST Demo，使用[前置代理](https://github.com/one-iast/practice/tree/main/front-proxy)
 保存流量到 redis，通过[go cron](https://github.com/go-co-op/gocron)
 定时任务自动获取量，并封装数据发送到[sqlmapapi](https://github.com/sqlmapproject/sqlmap/wiki/Usage#api-rest-json))
-和[burp-rest-api](https://github.com/vmware/burp-rest-api)进行 web 漏洞扫描，同时打印扫描结果到终端。
+和[burp-rest-api](https://github.com/vmware/burp-rest-api)进行 web 漏洞扫描，同时打印结果到终端并输出到文件。
 
-最主要功能是自动化获取前置代理的流量进行 web 漏洞扫描并打印结果到终端。
+最主要功能是自动化获取前置代理的流量进行 web 漏洞扫描，打印结果到终端并输出到文件。
 
 ## 功能特性
 
@@ -62,22 +62,33 @@
 
 1. 启动前置代理：参考[前置代理](https://github.com/one-iast/practice/tree/main/front-proxy)
 
-   【截图】
+   ![image](https://github.com/one-iast/practice/assets/30471543/c91f87a6-4824-4944-a859-9fb94180f2bc)
+
 2. 启动靶场：[参考](https://github.com/one-iast/practice/blob/main/course/2%20%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7%E9%80%89%E5%8F%96.md#%E6%90%AD%E5%BB%BA%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E7%8E%AF%E5%A2%83)
 
-   【截图】
+   【截图】略
 3. 通过通过源码/可执行文件运行IAST Demo
 
-   【截图】
-4. 访问靶场并获取结果
+   ![image](https://github.com/one-iast/practice/assets/30471543/a4982695-d50b-4b7b-84a2-39c7a75918b3)
 
-   【截图】
-5. 结果输出到终端
+   ![image](https://github.com/one-iast/practice/assets/30471543/b4686223-8285-44c0-8361-ff99124de6fd)
 
-   【截图】
-6. 文件结果
+5. 通过前置代理访问靶场并获取结果
 
-   【截图】
+   ![image](https://github.com/one-iast/practice/assets/30471543/01d749d9-6dbd-4c01-a86b-0bf45bd39a2a)
+
+7. 结果输出到终端及文件
+
+   sqlmap结果：
+   ![image](https://github.com/one-iast/practice/assets/30471543/30831cff-fc3e-4a34-9af7-cd65aaa4915d)
+   ![image](https://github.com/one-iast/practice/assets/30471543/a641ef23-f9b6-4ece-89b9-0657898922e5)
+   ![image](https://github.com/one-iast/practice/assets/30471543/a678806a-e8a8-44c2-9119-af58e239328e)
+
+   burpsuite结果：
+   ![image](https://github.com/one-iast/practice/assets/30471543/c5bfa147-6467-48d9-ab74-0fd02d5039f1)
+   ![image](https://github.com/one-iast/practice/assets/30471543/675bde24-8d4a-4066-a156-3dc2bef6f19c)
+   ![image](https://github.com/one-iast/practice/assets/30471543/9f4e7740-60e1-4080-a931-9a989901ccbd)
+   ![image](https://github.com/one-iast/practice/assets/30471543/1a1ff41b-ab35-4431-80d8-735dd485b5ad)
 
 ## 注意事项
 
